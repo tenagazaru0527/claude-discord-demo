@@ -19,8 +19,10 @@ CLAUDE_PROJECT_DIR で指定したプロジェクト
 ## 前提条件
 
 - Python、Git
-- ローカルにインストールしたClaude Code CLIと、そのログイン
+- ローカルにインストールしたClaude Code CLI **v2.1.259以降**と、そのログイン
 - Discordアカウント、Discord Bot / Application、Botを招待できるサーバーとチャンネル
+
+このデモのCLI引数では、`--restricted`はv2.1.248以降、`--permission-prompts`はv2.1.259以降が必要です。したがって必要な最低バージョンは**v2.1.259**です（[Claude Code公式CLIリファレンス](https://code.claude.com/docs/en/cli-reference)）。
 
 Botには対象チャンネルの`View Channel`と`Send Messages`を付与してください。`/claude`を使うため、招待時のScopeには`bot`と`applications.commands`が必要です。Message ContentなどのPrivileged Intentsは不要です。
 
@@ -31,7 +33,10 @@ git clone https://github.com/tenagazaru0527/claude-discord-demo.git
 cd claude-discord-demo
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+claude --version
 ```
+
+`claude --version`でv2.1.259以降と表示されることを確認してください。古い場合は[公式の更新手順](https://code.claude.com/docs/en/cli-reference)に従って更新してください。`CLAUDE_BIN`を設定する場合は、その実行ファイルのバージョンを確認してください。
 
 `.env.example`は必要な変数の一覧です。**両スクリプトは`.env`を自動読み込みしません。** 起動するPowerShellで環境変数を設定してください。Token、ID、ローカルパスは自分の値に置き換え、ファイルやチャットに貼らないでください。
 
